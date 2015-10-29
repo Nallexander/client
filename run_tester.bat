@@ -1,0 +1,1 @@
+java -Djava.security.policy=java.policy -classpath . Tester joshua.it.uu.se 3434 3435
