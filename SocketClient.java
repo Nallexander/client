@@ -16,7 +16,8 @@ class SocketClient extends DISClient {
      * @return The return string from the "socket call"
      */
     public static String runCommand(LabGroup input_lg, String server, int port) {
-	try {Socket socket = new Socket("server", port)}
+	try {Socket socket = new Socket("server", port);
+	}
 	catch (UnknownHostException e) {}
     System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 	ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
