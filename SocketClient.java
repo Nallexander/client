@@ -17,7 +17,7 @@ class SocketClient extends DISClient {
      */
     public static String runCommand(LabGroup input_lg, String server, int port) {
 	try{
-	    Socket socket = new Socket("server", port);
+	    Socket socket = new Socket(server, port);
 	    ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
 	    ObjectInputStream receiveFromServer = new ObjectInputStream(socket.getInputStream());
 	    sendToServer.writeObject(input_lg);
