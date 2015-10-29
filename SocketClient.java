@@ -23,7 +23,7 @@ class SocketClient extends DISClient {
 	    ObjectInputStream receiveFromServer = new ObjectInputStream(socket.getInputStream());
 	    System.out.print("Streams created");
 	    sendToServer.writeObject(input_lg);
-	    oSystem.out.print("Object sent");
+	    System.out.print("Object sent");
 	    String output = (String) receiveFromServer.readObject();
 
 	}
