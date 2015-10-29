@@ -25,6 +25,7 @@ class SocketClient extends DISClient {
 
 	}
 	catch (UnknownHostException e){}
+	catch (IOException f) {}
 	/* TODO: Provide the code to create a socket and
 	   connect it to the given port number ("port")
 	   at the specified host ("server"). Then send over
