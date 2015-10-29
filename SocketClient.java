@@ -16,9 +16,9 @@ class SocketClient extends DISClient {
      * @return The return string from the "socket call"
      */
     public static String runCommand(LabGroup input_lg, String server, int port) {
-	try {Socket socket = new Socket("server", port);
-	}
-	catch (UnknownHostException e) {}
+	Socket socket = new Socket("joshua.it.uu.se", port);
+	
+	
 	ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
 	ObjectInputStream receiveFromServer = new ObjectInputStream(socket.getInputStream());
 	sendToServer.writeObject(input_lg);
