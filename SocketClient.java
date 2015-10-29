@@ -20,7 +20,9 @@ class SocketClient extends DISClient {
 	    Socket socket = new Socket(server, port);
 	    ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
 	    ObjectInputStream receiveFromServer = new ObjectInputStream(socket.getInputStream());
+	    print("Streams created");
 	    sendToServer.writeObject(input_lg);
+	    print("Object sent");
 	    String output = (String) receiveFromServer.readObject();
 
 	}
