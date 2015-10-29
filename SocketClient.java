@@ -24,9 +24,15 @@ class SocketClient extends DISClient {
 	    String output = (String) receiveFromServer.readObject();
 
 	}
-	catch (UnknownHostException e){}
-	catch (IOException f) {}
-	catch (ClassNotFoundException g){}
+	catch (UnknownHostException e){
+	    System.err.println("UnknownHostException: " + e.getMessage());
+	}
+	catch (IOException e) {
+	    System.err.println("IOException: " + e.getMessage());
+	}
+	catch (ClassNotFoundException e){
+	    System.err.println("ClassNotFoundException: " + e.getMessage());
+	}
 	/* TODO: Provide the code to create a socket and
 	   connect it to the given port number ("port")
 	   at the specified host ("server"). Then send over

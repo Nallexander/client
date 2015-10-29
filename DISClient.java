@@ -14,8 +14,8 @@ class DISClient {
 	/* TODO: Change the added members below as to reflect
 	   your own lab group. The parameters are (in order):
 	   first name, last name, personal number. */
-	lg.addMember("Lars", "Larsson", "XXXXXX-XXXX");
-	lg.addMember("Nils", "Nilsson", "YYYYYY-YYYY");
+	lg.addMember("Alexander", "Lind", "910329-1770");
+	lg.addMember("Douglas", "Froling", "YYYYYY-YYYY");
 
 	return lg;
     }
