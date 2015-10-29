@@ -16,7 +16,11 @@ class SocketClient extends DISClient {
      * @return The return string from the "socket call"
      */
     public static String runCommand(LabGroup input_lg, String server, int port) {
-
+	Socket socket = new Socket(server, port);
+	ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
+	DataInputStream receiveFromServer = new DataInputStream(socket.getInputStream());
+	sendToServer.writeObject(input_lg);
+	String output = (String) receiveFromServer.readObject();
 	/* TODO: Provide the code to create a socket and
 	   connect it to the given port number ("port")
 	   at the specified host ("server"). Then send over
