@@ -16,13 +16,14 @@ class SocketClient extends DISClient {
      * @return The return string from the "socket call"
      */
     public static String runCommand(LabGroup input_lg, String server, int port) {
+	System.out.print("in runCommand");
 	try{
 	    Socket socket = new Socket(server, port);
 	    ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
 	    ObjectInputStream receiveFromServer = new ObjectInputStream(socket.getInputStream());
 	    System.out.print("Streams created");
 	    sendToServer.writeObject(input_lg);
-	    System.out.print("Object sent");
+	    oSystem.out.print("Object sent");
 	    String output = (String) receiveFromServer.readObject();
 
 	}
