@@ -19,7 +19,6 @@ class SocketClient extends DISClient {
 	try {Socket socket = new Socket("server", port);
 	}
 	catch (UnknownHostException e) {}
-    System.err.println("IndexOutOfBoundsException: " + e.getMessage());
 	ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
 	ObjectInputStream receiveFromServer = new ObjectInputStream(socket.getInputStream());
 	sendToServer.writeObject(input_lg);
