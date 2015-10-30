@@ -20,12 +20,10 @@ class SocketClient extends DISClient {
 	try{
 	    Socket socket = new Socket(server, port);
 	    ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
-	    ObjectInputStream receiveFromServer = new ObjectInputStream(socket.getInputStream());
-	    System.out.print("Streams created");
+	    BufferedReader receiveFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));   
 	    sendToServer.writeObject(input_lg);
-	    System.out.print("Object sent");
-	    String output = (String) receiveFromServer.readObject();
-
+	    String output = receiveFromServer.readLine();
+	    return output;
 	}
 	catch (UnknownHostException e){
 	    System.err.println("UnknownHostException: " + e.getMessage());
@@ -33,19 +31,7 @@ class SocketClient extends DISClient {
 	catch (IOException e) {
 	    System.err.println("IOException: " + e.getMessage());
 	}
-	catch (ClassNotFoundException e){
-	    System.err.println("ClassNotFoundException: " + e.getMessage());
-	}
-	/* TODO: Provide the code to create a socket and
-	   connect it to the given port number ("port")
-	   at the specified host ("server"). Then send over
-	   the given LabGroup object ("input_lg")
-	   serialized in the standard Java way and read
-	   back an answer (a one line string) from the
-	   server. This function (i.e. runCommand) is to
-	   return the string that was returned from the
-	   server. */
-
 	return "";
+
     }
 }
