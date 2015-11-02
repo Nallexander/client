@@ -26,10 +26,12 @@ class SocketClient extends DISClient {
 	    return output;
 	}
 	catch (UnknownHostException e){
-	    System.err.println("UnknownHostException: " + e.getMessage());
+	    System.err.println("Exception: " + e.toString());
+	    e.printStackTrace();
 	}
 	catch (IOException e) {
-	    System.err.println("IOException: " + e.getMessage());
+	    System.err.println("Exception: " + e.toString());
+	    e.printStackTrace();
 	}
 	return "";
 
