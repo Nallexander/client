@@ -1,0 +1,17 @@
+1.
+SocketClient.java:
+'CA 36 87 A4 BB AD 94 4B F4 7A 53 94 9B 8C 78 91'
+
+RMIClient.java:
+'77 47 55 36 EE A0 61 65 A6 19 03 FD 36 2E E1 DB'
+
+2.
+När vi använder oss av RMI kan klienten utföra operationen direkt i stället för att servern måste ha kod som berättar vad den ska göra när den tar en mot en socket (köra den i en funktion callFunction och skicka tillbaka den till klienten). Med RMI slipper vi också öppna separata in- och utströmmar för att skicka och ta emot data, vi behöver bara använda oss av det hämtade objektet som om det fanns lokalt. 
+
+3. 
+RMI kan vara långsammare eftersom man behöver hämta hem ett helt objekt för att använda det. När man använder sockets behöver man bara skicka eller ta emot den önskade datan. Servern måste tillhandahålla en objekt som klienten kan ladda hem. Om klienten bara vill använda en metod i objektet skulle andra metoder kunna vara onödiga att ladda hem. För att slippa onödiga nerladdningar av metoder skulle då servern behöva göra en ny explicit metod för just denna klient. 
+
+4.
+Om man har en tjänst som ska köras från andra icke Java-baserade plattformar kan sockets vara att föredra eftersom de, till skillnad från RMI, är kompatibla med andra plattformar än Java. 
+
+Om man har en tjänst som behöver göra många explicita anrop efter varandra kan RMI vara bättre eftersom man då kan använda samma hemladdade RMI-objekt flera gånger i stället för att varje gång behöva kontakta servern. På detta sätt blir nätverks-overheaden också mindre.   
