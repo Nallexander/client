@@ -24,11 +24,16 @@ class RMIClient extends DISClient {
 
     public static String runCommand(LabGroup input_lg, String server, int port) {
 	try {
+	    //Create a Registry with the specified server and port to receive the object from the server
 	    Registry reg = LocateRegistry.getRegistry(server, port);
+	    //Get the correct method from the object
 	    RMICall method = (RMICall) reg.lookup("RMICall");
+	    //Use the method on input_lg
 	    String output = method.callFunction(input_lg);
+	    //Return the string resulting from the method
 	    return output;
 	    }
+	//Catch-clauses for handling exceptions
 	catch (RemoteException e){
 	    System.err.println("Exception: " + e.toString());
 	    e.printStackTrace();
@@ -37,23 +42,7 @@ class RMIClient extends DISClient {
 	    System.err.println("Exception: " + e.toString());
 	    e.printStackTrace();
 	}
-	
-	
-	/* TODO: Provide the code to perform an RMI call
-	   to the method named "callFunction" (without the
-	   quotes) of the interface "RMICall". The method
-	   has the following signature:
-
-	   public String callFunction(LabGroup lg);
-
-	   The remote object is to be located using an RMI
-	   registry at the server and port which are given
-	   as input to this method (i.e. runCommand).
-	   When the remote method is called, the given
-	   input_lg LabGroup object is to be used as input.
-	   This method (i.e. runCommand) is to return the
-	   string that was returned from th
-	*/
-	return "";
+	//Default return, only used when handling an error. 
+	return "Error";
     }
 }

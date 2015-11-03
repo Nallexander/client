@@ -18,13 +18,18 @@ class SocketClient extends DISClient {
     public static String runCommand(LabGroup input_lg, String server, int port) {
 	System.out.print("in runCommand");
 	try{
+	    // Create socket, input- and output stream to be used for sending and receiving data to and from the server.
 	    Socket socket = new Socket(server, port);
 	    ObjectOutputStream sendToServer = new ObjectOutputStream(socket.getOutputStream());
-	    BufferedReader receiveFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream()));   
+	    BufferedReader receiveFromServer = new BufferedReader(new InputStreamReader(socket.getInputStream())); 
+	    //Send input_lg to server
 	    sendToServer.writeObject(input_lg);
+	    //Receive response from server
 	    String output = receiveFromServer.readLine();
+	    //Return the response
 	    return output;
 	}
+	//Catch-clauses for handling exceptions
 	catch (UnknownHostException e){
 	    System.err.println("Exception: " + e.toString());
 	    e.printStackTrace();
@@ -33,7 +38,8 @@ class SocketClient extends DISClient {
 	    System.err.println("Exception: " + e.toString());
 	    e.printStackTrace();
 	}
-	return "";
+	//Default return, only used when handling an error. 
+	return "Error";
 
     }
 }
